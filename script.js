@@ -41,7 +41,8 @@ q13.remove();
 
 *//*--------DOM ASSIGNMENT 2--------*/
 
-let b1 = document.querySelector(".button-1");
+//Question 1
+/*let b1 = document.querySelector(".button-1");
 b1.addEventListener("click",function(event){
     const preExist = document.querySelector(".btn-1-msg");
     if(!preExist){
@@ -71,4 +72,11 @@ b2.addEventListener("click",function(event){
     if(b1Msg){
         b1Msg.remove();
     }
+});*/
+
+//Question 2
+let b1 = document.querySelector(".jumbotron");
+b1.addEventListener("mouseover",function(){
+    alert("Hey, I told you not to hover over me!");
 });
+console.log(b1);
