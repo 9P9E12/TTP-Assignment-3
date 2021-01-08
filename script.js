@@ -82,7 +82,7 @@ b1.addEventListener("mouseover",function(){
 console.log(b1);*/
 
 //Question 4
-let b1 = document.getElementById("form-login");
+/*let b1 = document.getElementById("form-login");
 b1.addEventListener("submit",function(event){
     let pword = new FormData(b1).get('password');
     let y = document.getElementById("h1-elem");
@@ -92,4 +92,12 @@ b1.addEventListener("submit",function(event){
         alert("Incorrect Password");
     }
     
+});*/
+
+//Bonus
+let b1 = document.getElementById("form-calculate");
+b1.addEventListener("submit",function(event){
+    let radius = new FormData(b1).get('radius');
+    let result = (4/3) * Math.PI * Math.pow(radius,3);
+    alert(result);
 });
