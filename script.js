@@ -75,8 +75,21 @@ b2.addEventListener("click",function(event){
 });*/
 
 //Question 2
-let b1 = document.querySelector(".jumbotron");
+/*let b1 = document.querySelector(".jumbotron");
 b1.addEventListener("mouseover",function(){
     alert("Hey, I told you not to hover over me!");
 });
-console.log(b1);
+console.log(b1);*/
+
+//Question 4
+let b1 = document.getElementById("form-login");
+b1.addEventListener("submit",function(event){
+    let pword = new FormData(b1).get('password');
+    let y = document.getElementById("h1-elem");
+    if(pword == "12345678"){
+        y.innerText = "Test passed";
+    } else {
+        alert("Incorrect Password");
+    }
+    
+});
