@@ -104,14 +104,11 @@ b1.addEventListener("submit",function(event){
 
 
 *//*--------DOM ASSIGNMENT 3--------*/
-
-//Add a new row: get the number of columns add that many divs
-//Add a new col: Add an auto to the grid-template-columns in the css
-
-//Store number of rows
+//Store number of rows & columns. Default to 3x3
 let cols = 3;
 let rows = 3;
 
+//Row Add Button
 let rowAB = document.getElementById("Add-Row");
 rowAB.addEventListener("click",function(){
     //Increment number of rows by 1
@@ -121,7 +118,7 @@ rowAB.addEventListener("click",function(){
     updateGrid(cols,"A");
 });
 
-//When the columnAddButton is pressed, add a column to the grid
+//Column Add Button
 let colAB = document.getElementById("Add-Col");
 colAB.addEventListener("click",function(){
     //Increment number of cols by 1   
@@ -131,6 +128,7 @@ colAB.addEventListener("click",function(){
 
 });
 
+//Row Remove Button
 let rowRB = document.getElementById("Rmv-Row");
 rowRB.addEventListener("click",function(){
     //Decrement number of rows by 1
@@ -142,7 +140,7 @@ rowRB.addEventListener("click",function(){
     }
 });
 
-//When the columnAddButton is pressed, add a column to the grid
+//Column Remove Button
 let colRB = document.getElementById("Rmv-Col");
 colRB.addEventListener("click",function(){
     //Decrement number of cols by 1 
@@ -178,7 +176,7 @@ function updateRow(rowNum){
     document.getElementById('grid').style.gridTemplateRows = newRows.join(" ");
 }
 
-
+//Add or remove points from the grid depending on the given mode (Add or Remove)
 function updateGrid(points, mode){
     //Get the grid
     let grid = document.getElementById("grid");
@@ -189,6 +187,8 @@ function updateGrid(points, mode){
             newBlock.className = "grid-item";
             const msgText = document.createTextNode("");
             newBlock.appendChild(msgText);
+            //Add click event
+            addColorChange(newBlock);
             grid.appendChild(newBlock);
         }
     }
@@ -201,4 +201,17 @@ function updateGrid(points, mode){
             grid.removeChild(blocks[(len-i)]);
         }
     }
+}
+//Called on the initial nodes
+let gridElem = document.getElementsByClassName("grid-item");
+for(let i = 0; i < gridElem.length; i++){
+    addColorChange(gridElem[i]);
+}
+//Called when making new nodes
+function addColorChange(node){
+    node.addEventListener("click",function(){
+        let dropDown = document.getElementById("colors");
+        let color = dropDown.options[dropDown.selectedIndex].value;
+        console.log(color);
+    });
 }
