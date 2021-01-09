@@ -107,12 +107,16 @@ b1.addEventListener("submit",function(event){
 
 //Add a new row: get the number of columns add that many divs
 //Add a new col: Add an auto to the grid-template-columns in the css
-let b1 = document.getElementById("Add-Row");
-b1.addEventListener("click",function(event){
+let rowB = document.getElementById("Add-Row");
+rowB.addEventListener("click",function(){
     alert("You wanted to add a row.");
 });
 
-let b2 = document.getElementById("Add-Col");
-b2.addEventListener("click",function(event){
+let cols = "auto auto auto";
+let colB = document.getElementById("Add-Col");
+colB.addEventListener("click",function(){
     alert("You wanted to add a col.");
+    cols += " auto";
+    document.getElementById('grid').style.gridTemplateColumns = cols;
+    console.log(cols);
 });
