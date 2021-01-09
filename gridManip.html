@@ -7,7 +7,7 @@
     <link href="gridManip.css" rel="stylesheet">
 </head>
 <body>
-    <div class="grid-container">
+    <div class="grid-container" id="grid">
         <div class="grid-item">1</div>
         <div class="grid-item">2</div>
         <div class="grid-item">3</div>
@@ -17,10 +17,17 @@
         <div class="grid-item">7</div>
         <div class="grid-item">8</div>
         <div class="grid-item">9</div>
-        <div class="grid-item">9</div>
-        <div class="grid-item">9</div>
-        <div class="grid-item">9</div>
     </div> 
+    <button type="button" id="Add-Row">Add a row to the grid</button> 
+    <button type="button" id="Add-Col">Add a col to the grid</button> 
+    <label for="colors">Choose a colo:</label>
+    <select name="colors" id="colors">
+        <option value="">Default Color</option>
+        <option value="yellow">Yellow</option>
+        <option value="green">Green</option>
+        <option value="blue">Blue</option>
+        <option value="red">Red</option>
+    </select>
     <script src="script.js"></script>
 </body>
 </html>
