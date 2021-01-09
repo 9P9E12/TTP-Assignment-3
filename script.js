@@ -131,6 +131,24 @@ colAB.addEventListener("click",function(){
 
 });
 
+let rowRB = document.getElementById("Rmv-Row");
+rowRB.addEventListener("click",function(){
+    //Decrement number of rows by 1
+    rows--;
+    //Update the number of rows
+    updateRow(rows);
+    updateGrid(cols,"R");
+});
+
+//When the columnAddButton is pressed, add a column to the grid
+let colRB = document.getElementById("Rmv-Col");
+colRB.addEventListener("click",function(){
+    //Decrement number of cols by 1   
+    cols--;
+    updateCol(cols);
+    updateGrid(rows,"R");
+});
+
 //This function allows removal and addition of columns to be simplified by just
 //re-making the line every time an update is needed
 function updateCol(colNum){
@@ -172,10 +190,11 @@ function updateGrid(points, mode){
     }
     if(mode === "R"){
         //Get the list of points in the grid
-        let points = document.getElementsByClassName("grid-item");
+        let blocks = document.getElementsByClassName("grid-item");
         //Remove the number of points needed from the grid
+        let len = blocks.length - 1;
         for (let i = 0; i < points; i++) {
-            grid.removeChild(points[i]);
+            grid.removeChild(blocks[(len-i)]);
         }
     }
 }
