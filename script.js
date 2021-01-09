@@ -107,16 +107,64 @@ b1.addEventListener("submit",function(event){
 
 //Add a new row: get the number of columns add that many divs
 //Add a new col: Add an auto to the grid-template-columns in the css
+
+//Store number of rows
+let cols = 3;
+let rows = 3;
+
 let rowB = document.getElementById("Add-Row");
 rowB.addEventListener("click",function(){
-    alert("You wanted to add a row.");
+    //Increment number of rows by 1
+    rows++;
+    //Update the number of rows
+    updateRow(rows);
+    updateGrid(cols);
 });
 
-let cols = "auto auto auto";
-let colB = document.getElementById("Add-Col");
-colB.addEventListener("click",function(){
-    alert("You wanted to add a col.");
-    cols += " auto";
-    document.getElementById('grid').style.gridTemplateColumns = cols;
-    console.log(cols);
+//When the columnAddButton is pressed, add a column to the grid
+let colAB = document.getElementById("Add-Col");
+colAB.addEventListener("click",function(){
+    //Increment number of cols by 1   
+    cols++;
+    updateCol(cols);
+    updateGrid(rows);
 });
+
+//This function allows removal and addition of columns to be simplified by just
+//re-making the line every time an update is needed
+function updateCol(colNum){
+    //Create an empty array
+    let columns =[];
+    //The array is populated with the word auto, until colNum is reached
+    for (let i = 0; i < colNum; i++) {
+        columns.push("auto");
+    }
+    //By joining with " " it automatically adds a space to the autos
+    document.getElementById('grid').style.gridTemplateColumns = columns.join(" ");
+}
+
+//Update row follows the exact same logic as above, but edits the row instead of the columns
+function updateRow(rowNum){
+    //Create an empty array
+    let newRows=[];
+    //The array is populated with the word auto, until colNum is reached
+    for (let i = 0; i < rowNum; i++) {
+        newRows.push("auto");
+    }
+    //By joining with " " it automatically adds a space to the autos
+    document.getElementById('grid').style.gridTemplateRows = newRows.join(" ");
+    console.log(rowNum + ", " + newRows);
+}
+
+function updateGrid(points){
+    //Get the grid
+    let grid = document.getElementById("grid");
+    //Add the number of points needed to the grid
+    for (let i = 0; i < points; i++) {
+        const newBlock = document.createElement("DIV");
+        newBlock.className = "grid-item";
+        const msgText = document.createTextNode("");
+        newBlock.appendChild(msgText);
+        grid.appendChild(newBlock);
+    }
+}
