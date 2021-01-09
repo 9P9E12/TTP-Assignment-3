@@ -212,6 +212,6 @@ function addColorChange(node){
     node.addEventListener("click",function(){
         let dropDown = document.getElementById("colors");
         let color = dropDown.options[dropDown.selectedIndex].value;
-        console.log(color);
+        node.style.backgroundColor = color;
     });
 }
