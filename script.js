@@ -112,13 +112,13 @@ b1.addEventListener("submit",function(event){
 let cols = 3;
 let rows = 3;
 
-let rowB = document.getElementById("Add-Row");
-rowB.addEventListener("click",function(){
+let rowAB = document.getElementById("Add-Row");
+rowAB.addEventListener("click",function(){
     //Increment number of rows by 1
     rows++;
     //Update the number of rows
     updateRow(rows);
-    updateGrid(cols);
+    updateGrid(cols,"A");
 });
 
 //When the columnAddButton is pressed, add a column to the grid
@@ -127,7 +127,26 @@ colAB.addEventListener("click",function(){
     //Increment number of cols by 1   
     cols++;
     updateCol(cols);
-    updateGrid(rows);
+    updateGrid(rows,"A");
+
+});
+
+let rowRB = document.getElementById("Rmv-Row");
+rowRB.addEventListener("click",function(){
+    //Decrement number of rows by 1
+    rows--;
+    //Update the number of rows
+    updateRow(rows);
+    updateGrid(cols,"R");
+});
+
+//When the columnAddButton is pressed, add a column to the grid
+let colRB = document.getElementById("Rmv-Col");
+colRB.addEventListener("click",function(){
+    //Decrement number of cols by 1   
+    cols--;
+    updateCol(cols);
+    updateGrid(rows,"R");
 });
 
 //This function allows removal and addition of columns to be simplified by just
@@ -153,18 +172,29 @@ function updateRow(rowNum){
     }
     //By joining with " " it automatically adds a space to the autos
     document.getElementById('grid').style.gridTemplateRows = newRows.join(" ");
-    console.log(rowNum + ", " + newRows);
 }
 
-function updateGrid(points){
+
+function updateGrid(points, mode){
     //Get the grid
     let grid = document.getElementById("grid");
-    //Add the number of points needed to the grid
-    for (let i = 0; i < points; i++) {
-        const newBlock = document.createElement("DIV");
-        newBlock.className = "grid-item";
-        const msgText = document.createTextNode("");
-        newBlock.appendChild(msgText);
-        grid.appendChild(newBlock);
+    if(mode === "A"){
+        //Add the number of points needed to the grid
+        for (let i = 0; i < points; i++) {
+            const newBlock = document.createElement("DIV");
+            newBlock.className = "grid-item";
+            const msgText = document.createTextNode("");
+            newBlock.appendChild(msgText);
+            grid.appendChild(newBlock);
+        }
+    }
+    if(mode === "R"){
+        //Get the list of points in the grid
+        let blocks = document.getElementsByClassName("grid-item");
+        //Remove the number of points needed from the grid
+        let len = blocks.length - 1;
+        for (let i = 0; i < points; i++) {
+            grid.removeChild(blocks[(len-i)]);
+        }
     }
 }
