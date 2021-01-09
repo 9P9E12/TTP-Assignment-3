@@ -95,9 +95,15 @@ b1.addEventListener("submit",function(event){
 });*/
 
 //Bonus
-let b1 = document.getElementById("form-calculate");
+/*let b1 = document.getElementById("form-calculate");
 b1.addEventListener("submit",function(event){
     let radius = new FormData(b1).get('radius');
     let result = (4/3) * Math.PI * Math.pow(radius,3);
     alert(result);
 });
+
+
+*//*--------DOM ASSIGNMENT 3--------*/
+
+//Add a new row: get the number of columns add that many divs
+//Add a new col: Add an auto to the grid-template-columns in the css
