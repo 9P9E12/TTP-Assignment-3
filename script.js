@@ -108,6 +108,12 @@ b1.addEventListener("submit",function(event){
 let cols = 3;
 let rows = 3;
 
+//Called on the initial gridElements
+let gridElem = document.getElementsByClassName("grid-item");
+for(let i = 0; i < gridElem.length; i++){
+    addColorChange(gridElem[i]);
+}
+
 //Row Add Button
 let rowAB = document.getElementById("Add-Row");
 rowAB.addEventListener("click",function(){
@@ -148,6 +154,18 @@ colRB.addEventListener("click",function(){
         cols--;
         updateCol(cols);
         updateGrid(rows,"R");
+    }
+});
+
+//Set all colors button
+let fillAll = document.getElementById("Fill-All");
+fillAll.addEventListener("click",function(){
+    let gridPoints = document.getElementsByClassName("grid-item");
+    let dropDown = document.getElementById("colors");
+    let color = dropDown.options[dropDown.selectedIndex].value;
+    for(let i = 0; i < gridPoints.length; i++){
+        gridPoints[i].style.backgroundColor = color;
+        
     }
 });
 
@@ -202,12 +220,7 @@ function updateGrid(points, mode){
         }
     }
 }
-//Called on the initial nodes
-let gridElem = document.getElementsByClassName("grid-item");
-for(let i = 0; i < gridElem.length; i++){
-    addColorChange(gridElem[i]);
-}
-//Called when making new nodes
+//Called when making new nodes. This enables them to alter their color when clicked
 function addColorChange(node){
     node.addEventListener("click",function(){
         let dropDown = document.getElementById("colors");
