@@ -134,19 +134,23 @@ colAB.addEventListener("click",function(){
 let rowRB = document.getElementById("Rmv-Row");
 rowRB.addEventListener("click",function(){
     //Decrement number of rows by 1
-    rows--;
-    //Update the number of rows
-    updateRow(rows);
-    updateGrid(cols,"R");
+    if(rows > 0){
+        rows--;
+        //Update the number of rows
+        updateRow(rows);
+        updateGrid(cols,"R");
+    }
 });
 
 //When the columnAddButton is pressed, add a column to the grid
 let colRB = document.getElementById("Rmv-Col");
 colRB.addEventListener("click",function(){
-    //Decrement number of cols by 1   
-    cols--;
-    updateCol(cols);
-    updateGrid(rows,"R");
+    //Decrement number of cols by 1 
+    if(cols > 0){ 
+        cols--;
+        updateCol(cols);
+        updateGrid(rows,"R");
+    }
 });
 
 //This function allows removal and addition of columns to be simplified by just
