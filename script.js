@@ -107,11 +107,13 @@ b1.addEventListener("submit",function(event){
 //Store number of rows & columns. Default to 3x3
 let cols = 3;
 let rows = 3;
+let hold = false;
 
 //Called on the initial gridElements
 let gridElem = document.getElementsByClassName("grid-item");
 for(let i = 0; i < gridElem.length; i++){
     addColorChange(gridElem[i]);
+    addColorDrag(gridElem[i]);
 }
 
 //Row Add Button
@@ -165,7 +167,6 @@ fillAll.addEventListener("click",function(){
     let color = dropDown.options[dropDown.selectedIndex].value;
     for(let i = 0; i < gridPoints.length; i++){
         gridPoints[i].style.backgroundColor = color;
-        
     }
 });
 
@@ -226,5 +227,20 @@ function addColorChange(node){
         let dropDown = document.getElementById("colors");
         let color = dropDown.options[dropDown.selectedIndex].value;
         node.style.backgroundColor = color;
+    });
+}
+function addColorDrag(node){
+    document.getElementById('grid').addEventListener("mousedown",function(){
+        hold = true;
+    });
+    document.getElementById('grid').addEventListener("mouseup",function(){
+        hold = false;
+    });
+    node.addEventListener("mousemove",function(){
+        if(hold){
+            let dropDown = document.getElementById("colors");
+            let color = dropDown.options[dropDown.selectedIndex].value;
+            node.style.backgroundColor = color;
+        }
     });
 }
