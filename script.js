@@ -208,6 +208,7 @@ function updateGrid(points, mode){
             newBlock.appendChild(msgText);
             //Add click event
             addColorChange(newBlock);
+            addColorDrag(newBlock);
             grid.appendChild(newBlock);
         }
     }
